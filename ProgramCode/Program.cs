@@ -4,3 +4,26 @@
 
 string[] array = {"100", "hello", "1", ":)"};
 Console.WriteLine(string.Join(", ", array));
+
+string[] QuantityOfDigits(string[] array, int countOfDigits)
+{
+    int[] itemQuantity = new int[array.Length];
+    int countOfItems = 0;
+    for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length <= countOfDigits)
+        {
+            itemQuantity[countOfItems] = i;
+            countOfItems++;
+        }
+    }
+    string[] finalArray = new string[countOfItems];
+    for(int i = 0; i < countOfItems; i++)
+    {
+        finalArray[i] = array[itemQuantity[i]];
+    }
+    return finalArray;
+}
+
+string[] sortedArray = QuantityOfDigits(array, 3);
+Console.WriteLine(string.Join(", ", sortedArray));
